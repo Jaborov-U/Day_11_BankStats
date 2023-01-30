@@ -35,20 +35,23 @@ func ExampleTotalInCategory() {
 		{
 			Amount: 10,
 			Category: "Shop",
+			Status: types.StatusFail,
 		},
 		{
-			Amount: 10,
+			Amount: 15,
 			Category: "Shop",
+			Status: types.StatusInProgress,
 		},
 		{
 			Amount: 15,
 			Category: "Internet",
+			Status: types.StatusOk,
 		},
 	}
 	avgPays := TotalInCategory(cards, "Shop")
 
 	fmt.Println(avgPays)
 	
-	//Output: 20
+	//Output: 15
 	
 }

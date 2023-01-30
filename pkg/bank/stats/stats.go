@@ -26,7 +26,7 @@ func TotalInCategory(payments []types.Payment, category types.Category) types.Mo
 	summPays := 0
 
 	for _, payment := range payments {
-		if payment.Category == category {
+		if payment.Category == category && payment.Status != types.StatusFail {
 			summPays += int(payment.Amount)
 		}
 	}
