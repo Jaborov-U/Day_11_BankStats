@@ -2,7 +2,7 @@ package stats
 
 import (
 	"fmt"
-	"github.com/Jaborov-U/Day11BankTypes/pkg/bank"
+	""
 )
 
 func ExampleAVG() {
