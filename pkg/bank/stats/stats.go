@@ -1,6 +1,6 @@
 package stats
 
-import "github.com/Jaborov-U/Day-11-BankTypes/pkg/types"
+import "github.com/Jaborov-U/Day-11-BankTypes/v2/pkg/types"
 
 
 // AVG рассчитывает среднюю сумму платежа.
@@ -9,7 +9,9 @@ func AVG(payments []types.Payment) types.Money {
 	summPays := types.Money(0)
 
 	for _, payment := range payments {
+		if payment.Status != types.StatusFail{
 		summPays += payment.Amount
+		}
 	}
 
 	return summPays / types.Money(len(payments))
