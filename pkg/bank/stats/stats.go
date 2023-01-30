@@ -1,6 +1,6 @@
 package stats
 
-import "github.com/Jaborov-U/Day11BankTypes/pkg/bank"
+import "github.com/Jaborov-U/Day-11-BankTypes/pkg/types"
 
 
 // AVG рассчитывает среднюю сумму платежа.
