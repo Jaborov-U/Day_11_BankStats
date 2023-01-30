@@ -8,13 +8,16 @@ func AVG(payments []types.Payment) types.Money {
 
 	summPays := types.Money(0)
 
+	count := types.Money(0)
+
 	for _, payment := range payments {
 		if payment.Status != types.StatusFail{
-		summPays += payment.Amount
+			count++
+			summPays += payment.Amount
 		}
 	}
 
-	return summPays / types.Money(len(payments))
+	return summPays / count
 }
 
 // TotalInCategory находит сумму покупок в определенной категории.
