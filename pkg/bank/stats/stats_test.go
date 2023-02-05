@@ -80,24 +80,90 @@ func TestCategoriesAvg_Test(t *testing.T) {
 
 }
 
-func TestPeriodDinamic_Succes(t *testing.T) {
+func TestPeriodDinamic_v1(t *testing.T) {
 	first := map[types.Category]types.Money{
 		"auto":   10,
-		"food":   20,
-		"mobile": 10,
+		"food":   20,	
 	}
 
 	second := map[types.Category]types.Money{
 		"auto": 5,
 		"food": 3,
-		"taxi": 5,
 	}
 
 	expected := map[types.Category]types.Money{
 		"auto":   -5,
 		"food":   -17,
-		"taxi":   5,
-		"mobile": 0,
+	}
+
+	periodDinamic := PeriodsDynamic(first, second)
+
+	if !reflect.DeepEqual(periodDinamic, expected) {
+		t.Errorf("result: %v, expected: %v", periodDinamic, expected)
+	}
+}
+
+func TestPeriodDinamic_v2(t *testing.T) {
+	first := map[types.Category]types.Money{
+		"auto":   10,
+		"food":   20,	
+	}
+
+	second := map[types.Category]types.Money{
+		"auto": 20,
+		"food": 20,
+	}
+
+	expected := map[types.Category]types.Money{
+		"auto":   10,
+		"food":   0,
+	}
+
+	periodDinamic := PeriodsDynamic(first, second)
+
+	if !reflect.DeepEqual(periodDinamic, expected) {
+		t.Errorf("result: %v, expected: %v", periodDinamic, expected)
+	}
+}
+
+func TestPeriodDinamic_v3(t *testing.T) {
+	first := map[types.Category]types.Money{
+		"auto":   10,
+		"food":   20,	
+	}
+
+	second := map[types.Category]types.Money{
+		"food": 20,
+	}
+
+	expected := map[types.Category]types.Money{
+		"auto":   -10,
+		"food":   0,
+	}
+
+	periodDinamic := PeriodsDynamic(first, second)
+
+	if !reflect.DeepEqual(periodDinamic, expected) {
+		t.Errorf("result: %v, expected: %v", periodDinamic, expected)
+	}
+}
+
+func TestPeriodDinamic_v4(t *testing.T) {
+	first := map[types.Category]types.Money{
+		"auto":   10,
+		"food":   20,	
+	}
+
+	second := map[types.Category]types.Money{
+		"auto": 10,
+		"food": 25,
+		"mobile": 5,
+	}
+
+	expected := map[types.Category]types.Money{
+		"auto":   0,
+		"food":   5,
+		"mobile": 5,
 	}
 
 	periodDinamic := PeriodsDynamic(first, second)
